@@ -13,7 +13,7 @@ import {SamuService} from './services/samu.service'
   providers: [UFService, SamuService]
 })
 export class AppComponent implements OnInit {
-    uf_id = 13;
+    uf_id = 11;
     uf: UF;
     municipios_atendidos: Dados[];
     media: number;
