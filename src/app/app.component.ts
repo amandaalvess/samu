@@ -13,10 +13,10 @@ import {SamuService} from './services/samu.service'
   providers: [UFService, SamuService]
 })
 export class AppComponent implements OnInit {
+    municipiosatendidos: Dados[];
+    media: number;
     uf_id = 11;
     uf: UF;
-    municipios_atendidos: Dados[];
-    media: number;
 
     constructor(private ufService: UFService, private samuService: SamuService)
     {
@@ -25,15 +25,15 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.uf = this.ufService.getById(this.uf_id);
-        this.municipios_atendidos = this.samuService.getoMunicipiosAtendidosDoEstado(this.uf_id);
+        this.municipiosatendidos = this.samuService.getoMunicipiosAtendidosDoEstado(this.uf_id);
         this.media = this.calcularMedia();
     }
 
     calcularMedia(): number {
       var total = 0;
-      for(let mun of this.municipios_atendidos){
+      for(let mun of this.municipiosatendidos){
         total+=mun.valor;
       }
-      return Math.round(total/this.municipios_atendidos.length);
+      return Math.round(total/this.municipiosatendidos.length);
     }
 }
