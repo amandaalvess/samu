@@ -2,11 +2,11 @@
 <div style="text-align:center" class="title">
   <h1>{{uf.nome}}</h1>
 </div>
-<p>ID: {{uf.id}}</p>
+<p >ID: {{uf.id}}</p>
 <p>Área: {{uf.area}}</p>
-<p>Média municípios atendidos: {{media}}</p>
+<p> Média de  municípios atendidos: {{media}}</p>
 <ul>
   <li *ngFor="let municipio of municipios_atendidos">
-    Ano: {{municipio.ano}} Quantidade: {{municipio.valor}}
+    <p><u>Ano:</u> {{municipio.ano}} <u>Quantidade:</u> {{municipio.valor}}</p>
   </li>
 </ul>
