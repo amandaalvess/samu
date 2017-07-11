@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
     title = 'app';
     ufs : UF[];
     ID = 24;
-    municipiosAtendidos: Dados[] = [];
-    minhauf: UF;
+    munAtendidos: Dados[] = [];
+    meuUf: UF;
     dados_da_samu : Dados[];
     media: number = 0;
 
@@ -27,29 +27,26 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
         this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
-        this.minhauf = this.minhaUF();
-       this.media = this.mediaMunicipios();
+        this.meuUf = this.meuUF();
+       this.media = this.mediaDosMunicipios();
    }
 
-   minhaUF(): UF {
-     for (let uf of this.ufs) {
-         if (uf.id == this.ID) return uf;
-     }
-   }
-
-   mediaMunicipios(): number {
+   mediaDosMunicipios(): number {
      var numero_municipios = 0;
      var valor_total = 0;
      var Media = 0;
      for (let mun of this.dados_da_samu){
-       if (mun.uf_id == this.ID)
-       {
+       if (mun.uf_id == this.ID){
          numero_municipios++;
          valor_total = mun.valor + valor_total;
          Media = valor_total/numero_municipios
-         this.municipiosAtendidos.push(mun);
-         }
-     }
+         this.munAtendidos.push(mun);
+       }}
        return Media;
+   }
+    meuUF(): UF {
+     for (let uf of this.ufs) {
+         if (uf.id == this.ID) return uf;
+     }
    }
 }
