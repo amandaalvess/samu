@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { Dados } from '../types/samu';
+import { UF } from '../types/uf';
 import { VALORES } from './mock-samu_municipios_atendidos_por_estado';
 
 @Injectable()
@@ -10,11 +11,11 @@ export class SamuService {
     return VALORES;
   }
 
-  getoMunicipiosAtendidosDoEstado(uf_id: number): Dados[] {
-    var municipios_atendidos: Dados[] = [];
+  getoMunicipiosAtendidosPorEstado(uf: UF): Dados[] {
+    var total: Dados[] = [];
     for(let mun of VALORES){
-      if(mun.uf_id == uf_id) municipios_atendidos.push(mun);
+      if(mun.uf_id == uf.id) total.push(mun);
     }
-    return municipios_atendidos;
+    return total;
   }
 }
