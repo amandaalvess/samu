@@ -2,11 +2,8 @@
 <div style="text-align:center" class="title">
   <h1>{{uf.nome}}</h1>
 </div>
-<p >ID: {{uf.id}}</p>
-<p>Área: {{uf.area}}</p>
-<p> Média de municípios atendidos: {{media}}</p>
-<ul>
-  <li *ngFor="let municipio of municipiosatendidos">
-    <p><u>Ano:</u> {{municipio.ano}} <u>Quantidade:</u> {{municipio.valor}}</p>
-  </li>
-</ul>
+  <a routerLink="/resumo">Resumo</a>
+  <a routerLink="/dadosuf">Dados da UF</a>
+  <a routerLink="/todososdados">Todos os dados</a>
+  <router-outlet></router-outlet>
+</div>

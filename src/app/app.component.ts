@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
     municipiosatendidos: Dados[] = [];
     media: number;
     UFs: UF[];
-    dados_samu: Dados[];
+    dadossamu: Dados[];
     uf: UF;
 
     constructor(private ufService: UFService, private samuService: SamuService)
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.UFs = this.ufService.getAll();
         this.uf = this.ufService.getPorId(11);
-        this.municipiosatendidos = this.samuService.getoMunicipiosAtendidosPorEstado(this.uf);
+        this.municipiosatendidos = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.uf);
         this.media = this.calculoMedia();
     }
 
