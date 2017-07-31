@@ -26,7 +26,7 @@ import { TodosDadosComponent } from './todosdados.component';
         component: DadosUFComponent
           },
           {
-         path: 'todososdados',
+         path: 'todosdados',
         component: TodosDadosComponent
         }
             ])
