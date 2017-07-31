@@ -1,0 +1,14 @@
+<div style="text-align:center">
+ <header>
+    <b>{{meuUf.nome}}</b> <br>
+</header>
+<div>
+     ID: {{meuUf.id}} <br>
+     ÁREA: {{meuUf.area}} <br>
+     MÉDIA: {{media}} <br>
+<li *ngFor="let ano of anos">
+     <u>Ano:</u> {{ano.ano}} <br>
+     <u>Municípios Atendidos:</u> {{ano.valor}}
+</li>
+</div>
+</div>
