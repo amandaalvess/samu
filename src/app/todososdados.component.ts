@@ -14,10 +14,8 @@ import {UFs} from './services/mock-ufs'
   styleUrls: ['./app.component.css'],
 })
 export class TodosOsDadosComponent implements OnInit {
-    title = 'Todos os dados';
-    id = 11;
     media: number;
-    anos: Dados[];
+    municipiosatendidos: Dados[] = [];
     uf: UF;
     ufs : UF[];
     dadossamu : Dados[];
@@ -27,10 +25,16 @@ export class TodosOsDadosComponent implements OnInit {
 
     ngOnInit(): void {
         this.ufs = this.ufService.getAll();
-        this.dadossamu = this.samuService.getAllMunicipiosAtendidosPorEstado();
-        this.uf = this.ufService.getPorId(this.id);
-        this.media = this.samuService.getMunicipioMedia(this.id);
-        this.anos = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.uf);
+        this.uf = this.ufService.getPorId(11);
+        this.municipiosatendidos = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.uf);
+        this.media = this.calculomedia();
     }
 
+    calculomedia(): number {
+        var total = 0;
+        for(let mun of this.municipiosatendidos){
+          total+=mun.valor;
+        }
+        return Math.round(total/this.municipiosatendidos.length);
+  }
 }

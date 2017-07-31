@@ -13,6 +13,8 @@ import {SamuService} from './services/samu.service'
   providers: [UFService, SamuService]
 })
 export class AppComponent implements OnInit {
+    title: string = "";
+    id = 11;
     municipiosatendidos: Dados[] = [];
     media: number;
     UFs: UF[];
@@ -29,18 +31,19 @@ export class AppComponent implements OnInit {
         this.uf = this.ufService.getPorId(11);
         this.municipiosatendidos = this.samuService.getPorUFMunicipiosAtendidosPorEstado(this.uf);
         this.media = this.calculoMedia();
+        this.title = this.defineTitle();
+    }
+    defineTitle(): string{
+           for(let uf of this.UFs){
+             if(uf.id == 11) return uf.nome;
+           }
     }
 
     calculoMedia(): number {
-      var quantidade = 0;
-      var total = 0;
-      for(let mun of this.municipiosatendidos){
-        if(mun.uf_id == 11)
-        {
-          quantidade++;
-          total += mun.valor;
-        }
-      }
-      return Math.round(total/quantidade);
-    }
+     var total = 0;
+     for(let mun of this.municipiosatendidos){
+       total+=mun.valor;
+     }
+     return Math.round(total/this.municipiosatendidos.length);
+}
 }
