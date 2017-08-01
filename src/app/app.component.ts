@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
     media: number = 0;
 
     constructor(private ufService: UFService, private samuService: SamuService)
-    { }
+    {
+
+    }
 
   ngOnInit(): void {
         this.ufs = this.ufService.getAll();
