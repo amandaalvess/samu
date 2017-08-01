@@ -7,6 +7,8 @@ import { SamuService } from './services/samu.service';
 import { ResumoComponent } from './resumo.component';
 import { DadosUFComponent } from './uf.component';
 import { TodosDadosComponent } from './todosdados.component';
+import { TodosMetodos } from './services/todosmetodos.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,7 @@ import { TodosDadosComponent } from './todosdados.component';
         }
             ])
    ],
-  providers: [ UFService, SamuService],
+  providers: [ UFService, SamuService, TodosMetodos],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

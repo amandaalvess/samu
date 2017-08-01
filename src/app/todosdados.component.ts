@@ -12,9 +12,8 @@ styleUrls: ['./app.component.css'],
 })
 export class TodosDadosComponent implements OnInit {
     title = 'todos os dados';
-    id = 24;
+    munAtendidos: Dados[] = [];
     media: number;
-    anos: Dados[];
     meuUf: UF;
     ufs : UF[];
     dados_da_samu : Dados[];
@@ -24,9 +23,16 @@ constructor(private ufService: UFService, private samuService: SamuService)
 
    ngOnInit(): void {
          this.ufs = this.ufService.getAll();
-         this.dados_da_samu = this.samuService.getAllMunicipiosAtendidosPorEstado();
-         this.meuUf = this.ufService.getById(this.id);
-         this.media = this.samuService.getMunicipioMedia(this.id);
-         this.anos = this.samuService.getoMunicipiosAtendidosDoEstado(this.meuUf.id);
+         this.meuUf = this.ufService.getById(24);
+         this.media = this.calculomedia();
+         this.munAtendidos = this.samuService.getoMunicipiosAtendidosDoEstado(this.meuUf.id);
      }
+
+     calculomedia(): number {
+        var total = 0;
+        for(let mun of this.munAtendidos){
+          total+=mun.valor;
+        }
+        return Math.round(total/this.munAtendidos.length);
    }
+}
